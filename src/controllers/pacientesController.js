@@ -25,7 +25,20 @@ const PacientesController = {
         res.json(novoPaciente);
     },
     async atualizar(req, res) {
+        const {paciente_id} = req.params;
+        const {nome, email, idade} = req.body;
+        await Pacientes.update({
+            nome,
+            email,
+            idade
 
+        }, {
+            where: {
+                paciente_id
+            }
+        });
+        const pacienteAtualizado = await Pacientes.findByPk(paciente_id);
+        res.status(200).json(pacienteAtualizado);
     },
     async deletar (req, res) {
 
