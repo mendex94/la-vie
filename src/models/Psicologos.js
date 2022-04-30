@@ -21,7 +21,7 @@ const Psicologos = db.define('Psicologos', {
     }
 }, {
     tableName: 'psicologos',
-    timestamps: 'false'    
+    timestamp: false    
 })
 
 module.exports = Psicologos
