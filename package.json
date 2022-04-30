@@ -1,0 +1,19 @@
+{
+  "name": "la-vie",
+  "version": "1.0.0",
+  "description": "Sistema CRUD de uma clinica, com autenticação.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ViniciusAntonello/la-vie.git"
+  },
+  "author": "Felipe C. Mendes, Vinicius Antonello, Thais Cavalcante, Rainier Pironi, Frederic Rodrigues",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ViniciusAntonello/la-vie/issues"
+  },
+  "homepage": "https://github.com/ViniciusAntonello/la-vie#readme"
+}
