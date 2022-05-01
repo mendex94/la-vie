@@ -7,8 +7,14 @@ const psicologosCreateValidation = require('../validations/psicologos/create')
 const authLoginValidation = require('../validations/auth/login')
 const pacientesCreateValidation = require('../validations/pacientes/create');
 const pacientesUpdateValidation = require('../validations/pacientes/update');
+const auth = require('../middleware/auth')
 
 routes.post('/psicologos', psicologosCreateValidation, psicologosController.cadastrarPsico)
+routes.get('/psicologos', psicologosController.listarPsico)
+routes.get('/psicologos/:id', psicologosController.listarId)
+routes.put('/psicologos/:id', psicologosCreateValidation, psicologosController.atualizarPsico)
+routes.delete('/psicologos/:id', psicologosController.deletarPsico)
+
 routes.post('/login', authLoginValidation, authController.login)
 
 
