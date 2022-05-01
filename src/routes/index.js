@@ -19,9 +19,9 @@ routes.post('/login', authLoginValidation, authController.login)
 
 
 routes.get("/pacientes", PacientesController.listarTodos);
-routes.get("/pacientes/:paciente_id", PacientesController.buscarPorId);
+routes.get("/pacientes/:id", PacientesController.buscarPorId);
 routes.post("/pacientes", pacientesCreateValidation, PacientesController.cadastrar);
-routes.put("/pacientes/:paciente_id", pacientesUpdateValidation, PacientesController.atualizar);
-routes.delete("/pacientes/:paciente_id", PacientesController.deletar);
+routes.put("/pacientes/:id", pacientesUpdateValidation, PacientesController.atualizar);
+routes.delete("/pacientes/:id", PacientesController.deletar);
 
 module.exports = routes

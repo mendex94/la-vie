@@ -6,8 +6,8 @@ const PacientesController = {
     res.status(200).json(pacientes);
   },
   async buscarPorId(req, res) {
-    const { paciente_id } = req.params;
-    const paciente = await Pacientes.findByPk(paciente_id);
+    const { id } = req.params;
+    const paciente = await Pacientes.findByPk(id);
     if (paciente) {
       res.status(200).json(paciente);
     } else {
@@ -24,8 +24,9 @@ const PacientesController = {
     res.status(201).json(novoPaciente);
   },
   async atualizar(req, res) {
-    const { paciente_id } = req.params;
+    const { id } = req.params;
     const { nome, email, idade } = req.body;
+    if(!id) return res.status(400).json("Id não encontrado");
     await Pacientes.update(
       {
         nome,
@@ -34,27 +35,23 @@ const PacientesController = {
       },
       {
         where: {
-          paciente_id,
+          paciente_id: id,
         },
       }
     );
-    const pacienteAtualizado = await Pacientes.findByPk(paciente_id);
+    const pacienteAtualizado = await Pacientes.findByPk(id);
     res.status(200).json(pacienteAtualizado);
   },
   async deletar(req, res) {
-    const { paciente_id } = req.params;
-    const paciente = await Pacientes.findByPk(paciente_id);
-    if (!paciente) {
-      res.status(404).send("Id não encontrado");
-    } else {
-      await Pacientes.destroy({
+    const { id } = req.params
+    if (!id) return res.status(404).json("Id não encontrado")
+    await Pacientes.destroy({
         where: {
-          paciente_id,
-        },
-      });
-      res.send("Paciente excluido com sucesso");
-    }
-  },
+            paciente_id: id
+        }
+    })
+    res.status(204).json("Paciente excluido com sucesso")
+},
 };
 
 module.exports = PacientesController;
