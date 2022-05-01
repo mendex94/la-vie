@@ -1,3 +1,5 @@
 const Psicologos = require('./Psicologos')
 
-module.exports = { Psicologos }
+const Pacientes = require('./Pacientes');
+
+module.exports = { Psicologos, Pacientes };

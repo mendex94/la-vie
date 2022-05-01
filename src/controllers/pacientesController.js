@@ -1,4 +1,4 @@
-const Pacientes = require("../models/Pacientes.js");
+const { Pacientes } = require('../models');
 
 const PacientesController = {
   async listarTodos(req, res) {
