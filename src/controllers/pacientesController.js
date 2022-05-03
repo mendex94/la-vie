@@ -52,6 +52,10 @@ const PacientesController = {
     })
     res.status(204).json("Paciente excluido com sucesso")
 },
+async numeroDePacientes(req, res) {
+  const pacientes = await Pacientes.count();
+  res.status(200).json(pacientes);
+}
 };
 
 module.exports = PacientesController;
