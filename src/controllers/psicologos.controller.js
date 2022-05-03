@@ -15,8 +15,8 @@ const psicologosController = {
         res.status(201).json(newPsico)
     },
     async listarPsico(req, res){
-        const listarPsico = await Psicologos.findAll()
-        res.json(listarPsico)
+        const psicologos = await Psicologos.findAll()
+        res.json(psicologos)
     },
     async listarId(req, res){
         const { id } = req.params
@@ -53,7 +53,11 @@ const psicologosController = {
             }
         })
         res.status(204).json('Psicologo deletado do banco de dados.')
-    }
+    },
+    async numeroDePsicologos(req, res) {
+        const psicologos = await Psicologos.count();
+        res.status(200).json(psicologos);
+      }
 }
 
 module.exports = psicologosController

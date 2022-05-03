@@ -13,6 +13,7 @@ const atendimentosController = {
         res.status(201).json(novoAtendimento);
     },
 
+
     async listarAtendimentos(req, res) {
         const atendimentos = await Atendimentos.findAll({
             include: [
@@ -48,7 +49,11 @@ const atendimentosController = {
         }else {
             res.status(404).json('Id não encontrado');
         }
-    }
+    },
+    async numeroDeAtendimentos(req, res) {
+        const atendimentos = await Atendimentos.count();
+        res.status(200).json(atendimentos);
+      }
 }
 
 module.exports = atendimentosController;
