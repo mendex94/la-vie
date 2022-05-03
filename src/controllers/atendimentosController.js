@@ -3,8 +3,7 @@ const { Atendimentos, Psicologos, Pacientes } = require('../models');
 const atendimentosController = {
     async cadastrar(req, res) {
         const { data_atendimento, observacao, paciente_id } = req.body;
-        const { id } = req.auth; 
-
+        const { id } = req.auth;
         try {
             const novoAtendimento = await Atendimentos.create({
                 data_atendimento,
@@ -20,8 +19,9 @@ const atendimentosController = {
             res.status(400).json('Paciente ID invalido')
 
         }
-
+        res.status(201).json(novoAtendimento);
     },
+
 
     async listarAtendimentos(req, res) {
         const atendimentos = await Atendimentos.findAll({
@@ -58,7 +58,11 @@ const atendimentosController = {
         }else {
             res.status(404).json('Id não encontrado');
         }
-    }
+    },
+    async numeroDeAtendimentos(req, res) {
+        const atendimentos = await Atendimentos.count();
+        res.status(200).json(atendimentos);
+      }
 }
 
 module.exports = atendimentosController;

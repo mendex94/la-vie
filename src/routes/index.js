@@ -33,4 +33,12 @@ routes.post('/atendimentos', auth, atendimentosCreateValidation, atendimentosCon
 routes.get('/atendimentos', auth, atendimentosController.listarAtendimentos);
 routes.get('/atendimentos/:id', auth, atendimentosController.listarId);
 
+
+// Rotas CRUD Dashboard
+
+routes.get("/dashboard/numero-paciente", PacientesController.numeroDePacientes);
+routes.get("/dashboard/numero-psicologo", psicologosController.numeroDePsicologos);
+routes.get("/dashboard/numero-atendimento", atendimentosController.numeroDeAtendimentos);
+routes.get("/dashboard/numero-media-atendimento.", PacientesController.listarTodos);
+
 module.exports = routes;
