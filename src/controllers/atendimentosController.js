@@ -4,12 +4,21 @@ const atendimentosController = {
     async cadastrar(req, res) {
         const { data_atendimento, observacao, paciente_id } = req.body;
         const { id } = req.auth;
-        const novoAtendimento = await Atendimentos.create({
-            data_atendimento,
-            observacao,
-            paciente_id,
-            psico_id: id
-        });
+        try {
+            const novoAtendimento = await Atendimentos.create({
+                data_atendimento,
+                observacao,
+                paciente_id,
+                psico_id: id
+            });
+    
+            res.status(201).json(novoAtendimento);
+            
+        } catch (error) {
+            
+            res.status(400).json('Paciente ID invalido')
+
+        }
         res.status(201).json(novoAtendimento);
     },
 
