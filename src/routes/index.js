@@ -9,7 +9,7 @@ const authLoginValidation = require('../validations/auth/login')
 const pacientesCreateValidation = require('../validations/pacientes/create');
 const pacientesUpdateValidation = require('../validations/pacientes/update');
 const atendimentosCreateValidation = require('../validations/atendimentos/create');
-const auth = require('../middleware/auth')
+const auth = require('../middleware/auth');
 
 // Rotas CRUD psicólogo
 routes.post('/psicologos', psicologosCreateValidation, psicologosController.cadastrarPsico)
