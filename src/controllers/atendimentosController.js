@@ -4,22 +4,19 @@ const atendimentosController = {
     async cadastrar(req, res) {
         const { data_atendimento, observacao, paciente_id } = req.body;
         const { id } = req.auth;
-        try {
+        const existsUser = await Pacientes.count({ where: { paciente_id } });
+
+            if (!existsUser) {
+                return res.status(400).json("Paciente não cadastrado na base de dados!");
+            }
             const novoAtendimento = await Atendimentos.create({
                 data_atendimento,
                 observacao,
                 paciente_id,
                 psico_id: id
             });
-    
-            res.status(201).json(novoAtendimento);
-            
-        } catch (error) {
-            
-            res.status(400).json('Paciente ID invalido')
 
-        }
-        res.status(201).json(novoAtendimento);
+            res.status(201).json(novoAtendimento);
     },
 
 
@@ -53,16 +50,12 @@ const atendimentosController = {
             ]
         });
 
-        if(atendimento) {
+        if (atendimento) {
             res.status(200).json(atendimento);
-        }else {
+        } else {
             res.status(404).json('Id não encontrado');
         }
     },
-    async numeroDeAtendimentos(req, res) {
-        const atendimentos = await Atendimentos.count();
-        res.status(200).json(atendimentos);
-      }
 }
 
 module.exports = atendimentosController;

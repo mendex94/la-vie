@@ -9,8 +9,8 @@ const authLoginValidation = require('../validations/auth/login')
 const pacientesCreateValidation = require('../validations/pacientes/create');
 const pacientesUpdateValidation = require('../validations/pacientes/update');
 const atendimentosCreateValidation = require('../validations/atendimentos/create');
-const auth = require('../middleware/auth')
-
+const auth = require('../middleware/auth');
+const dashboardController = require ("../controllers/dashboardController")
 // Rotas CRUD psicólogo
 routes.post('/psicologos', psicologosCreateValidation, psicologosController.cadastrarPsico)
 routes.get('/psicologos', psicologosController.listarPsico)
@@ -36,9 +36,9 @@ routes.get('/atendimentos/:id', auth, atendimentosController.listarId);
 
 // Rotas CRUD Dashboard
 
-routes.get("/dashboard/numero-paciente", PacientesController.numeroDePacientes);
-routes.get("/dashboard/numero-psicologo", psicologosController.numeroDePsicologos);
-routes.get("/dashboard/numero-atendimento", atendimentosController.numeroDeAtendimentos);
-routes.get("/dashboard/numero-media-atendimento.", PacientesController.listarTodos);
+routes.get("/dashboard/numero-paciente", dashboardController.numeroDePacientes);
+routes.get("/dashboard/numero-psicologo", dashboardController.numeroDePsicologos);
+routes.get("/dashboard/numero-atendimento", dashboardController.numeroDeAtendimentos);
+routes.get("/dashboard/media", dashboardController.media);
 
 module.exports = routes;
