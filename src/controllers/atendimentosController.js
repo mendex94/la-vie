@@ -59,10 +59,6 @@ const atendimentosController = {
             res.status(404).json('Id não encontrado');
         }
     },
-    async numeroDeAtendimentos(req, res) {
-        const atendimentos = await Atendimentos.count();
-        res.status(200).json(atendimentos);
-      }
 }
 
 module.exports = atendimentosController;

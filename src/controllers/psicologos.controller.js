@@ -54,10 +54,6 @@ const psicologosController = {
         })
         res.status(204).json('Psicologo deletado do banco de dados.')
     },
-    async numeroDePsicologos(req, res) {
-        const psicologos = await Psicologos.count();
-        res.status(200).json(psicologos);
-      }
 }
 
 module.exports = psicologosController
