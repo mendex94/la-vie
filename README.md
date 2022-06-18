@@ -22,6 +22,6 @@ npm run server
 ```
 
 ## Imnsonia 
-Para testar a API do DevRadar, baixe e instale o [Insomnia](https://insomnia.rest/download/).
+Para testar a API do LaVie, baixe e instale o [Insomnia](https://insomnia.rest/download/).
 Veja toda a documentação sobre os [endpoints](https://viniciusantonello.github.io/la-vie/).
 
